@@ -16,5 +16,23 @@
 			"jump": 5,
             "dead": 6
 		}
-    }
+    },
+	"blockLeftTop": {
+		"x": 160,
+		"y": 208,
+		"width": 16,
+		"height": 16
+	},
+	"blockMidTop": {
+		"x": 176,
+		"y": 208,
+		"width": 16,
+		"height": 16
+	},
+	"blockRightTop": {
+		"x": 192,
+		"y": 208,
+		"width": 16,
+		"height": 16
+	}
 }
