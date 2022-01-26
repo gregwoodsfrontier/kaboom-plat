@@ -8,4 +8,4 @@ k.loadSpriteAtlas(
 
 k.scene('game', Game)
 
-k.go('game')
+k.go('game', 0)

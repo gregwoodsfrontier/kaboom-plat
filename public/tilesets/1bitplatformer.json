@@ -34,5 +34,38 @@
 		"y": 208,
 		"width": 16,
 		"height": 16
+	},
+	"blkLeftFloat": {
+		"x": 160,
+		"y": 256,
+		"width": 16,
+		"height": 16
+	},
+	"blkMidFloat": {
+		"x": 176,
+		"y": 256,
+		"width": 16,
+		"height": 16
+	},
+	"blkRightFloat": {
+		"x": 192,
+		"y": 256,
+		"width": 16,
+		"height": 16
+	},
+	"door": {
+		"x": 272,
+		"y": 32,
+		"width": 48,
+		"height": 16,
+		"sliceX": 3,
+		"anims": {
+			"closed": 0,
+			"open": {
+				"from": 1,
+				"to": 2,
+				"speed": 1
+			}
+		}
 	}
 }
