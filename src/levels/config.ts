@@ -6,7 +6,13 @@ const TILE_HEIGHT = TILE_UNIT * SCALE
 const levelConfig = {
     width: TILE_WIDTH,
     height: TILE_HEIGHT,
-    pos: vec2(32, 64+8),
+    pos: vec2(32, 72),
+    ".": () => [
+      sprite("blkSingleFloat"),
+      area(),
+      solid(),
+      scale(SCALE)
+    ],
     "l": () => [
         sprite("blockLeftTop"),
         area(),

@@ -53,6 +53,12 @@
 		"width": 16,
 		"height": 16
 	},
+  "blkSingleFloat": {
+		"x": 208,
+		"y": 256,
+		"width": 16,
+		"height": 16
+	},
 	"door": {
 		"x": 272,
 		"y": 32,
