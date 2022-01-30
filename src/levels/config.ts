@@ -6,7 +6,6 @@ const TILE_HEIGHT = TILE_UNIT * SCALE
 const levelConfig = {
     width: TILE_WIDTH,
     height: TILE_HEIGHT,
-    pos: vec2(32, 32),
     "#": () => [
         sprite("zone-top"),
         area(),
@@ -61,14 +60,18 @@ const levelConfig = {
         solid(),
         scale(SCALE)
     ],
-    "d": () => [
+    "D": () => [
         sprite("big-door", { anim: "closed" }),
         area(),
-        solid(),
         scale(SCALE),
-        "door"
+        "big-door"
     ],
-    
+    "K": () => [
+        sprite("big-key"),
+        area(),
+        "big-key"
+    ],
+
 }
 
 export default levelConfig

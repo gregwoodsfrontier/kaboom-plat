@@ -1,10 +1,9 @@
-import { GameObj } from "kaboom"
 import k from "../kaboom"
 import layout from "../levels"
 import levelConfig from "../levels/config"
 
 const SPEED = 150
-const JUMP_FORCE = 900
+const JUMP_FORCE = 600
 
 const Game = (levelIdx: number) => {
     const map = k.addLevel(layout[levelIdx], levelConfig);
@@ -12,19 +11,12 @@ const Game = (levelIdx: number) => {
     // add a sprite
     const player = k.add([
         k.sprite("hero", { anim: "idle" }),
-        k.pos( map.getPos(2, 8) ),
+        k.pos( map.getPos(2, 14) ),
         k.area(),
         k.body(),
         k.origin("center"),
         k.scale(3,3)
     ]);
-
-    /* const dirs = {
-        "left": LEFT,
-        "right": RIGHT,
-        "up": UP,
-        "down": DOWN,
-    } */
 
     k.onKeyDown("left", () => {
         player.move(-SPEED, 0);
@@ -52,11 +44,14 @@ const Game = (levelIdx: number) => {
         }
     })
     
-    player.onUpdate(() => {
-        if(player.pos.y <= 0)
+    player.onCollide("big-door", () => {
+        if(levelIdx < layout.length)
         {
-            player.move(0, 0)
-            player.pos = map.getPos(2, 8)
+            go("game", levelIdx + 1)
+        }
+        else
+        {
+            go("win")
         }
     })
 }
