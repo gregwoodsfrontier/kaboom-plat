@@ -53,25 +53,70 @@
 		"width": 16,
 		"height": 16
 	},
-  "blkSingleFloat": {
+  	"blkSingleFloat": {
 		"x": 208,
 		"y": 256,
 		"width": 16,
 		"height": 16
 	},
-	"door": {
-		"x": 272,
+	"big-door": {
+		"x": 256,
 		"y": 32,
-		"width": 48,
+		"width": 64,
 		"height": 16,
-		"sliceX": 3,
+		"sliceX": 4,
 		"anims": {
-			"closed": 0,
+			"closed": 1,
 			"open": {
-				"from": 1,
-				"to": 2,
+				"from": 2,
+				"to": 3,
 				"speed": 1
 			}
 		}
+	},
+	"small-door": {
+		"x": 256,
+		"y": 32,
+		"width": 64,
+		"height": 16,
+		"sliceX": 4,
+		"anims": {
+			"closed": 0,
+			"open": {
+				"from": 2,
+				"to": 3,
+				"speed": 1
+			}
+		}
+	},
+	"big-key": {
+		"x": 256,
+		"y": 64,
+		"width": 16,
+		"height": 16
+	},
+	"small-key": {
+		"x": 272,
+		"y": 64,
+		"width": 16,
+		"height": 16
+	},
+	"zone-top": {
+		"x": 208,
+		"y": 144,
+		"width": 16,
+		"height": 16
+	},
+	"zone-mid": {
+		"x": 208,
+		"y": 160,
+		"width": 16,
+		"height": 16
+	},
+	"zone-bot": {
+		"x": 208,
+		"y": 172,
+		"width": 16,
+		"height": 16
 	}
 }

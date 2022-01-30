@@ -1,8 +1,10 @@
+import { GameObj } from "kaboom"
 import k from "../kaboom"
 import layout from "../levels"
 import levelConfig from "../levels/config"
 
-const SPEED = 100
+const SPEED = 150
+const JUMP_FORCE = 900
 
 const Game = (levelIdx: number) => {
     const map = k.addLevel(layout[levelIdx], levelConfig);
@@ -34,14 +36,29 @@ const Game = (levelIdx: number) => {
         player.flipX(false);
     })
 
-    k.onKeyRelease(["left", "right"], () => {
+    k.onKeyRelease(["left", "right", "up"], () => {
         player.play("idle");
     })
 
     k.onKeyPress(["left", "right"], () => {
         player.play("run")
     })
+
+    k.onKeyPress("up", () => {
+        if(player.isGrounded())
+        {
+            player.jump(JUMP_FORCE)
+            player.play("jump")
+        }
+    })
     
+    player.onUpdate(() => {
+        if(player.pos.y <= 0)
+        {
+            player.move(0, 0)
+            player.pos = map.getPos(2, 8)
+        }
+    })
 }
 
 export default Game
