@@ -4,6 +4,7 @@ const TILE_WIDTH = TILE_UNIT * SCALE
 const TILE_HEIGHT = TILE_UNIT * SCALE
 
 const levelConfig = {
+    pos: vec2(0, TILE_HEIGHT),
     width: TILE_WIDTH,
     height: TILE_HEIGHT,
     "#": () => [

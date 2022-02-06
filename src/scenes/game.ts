@@ -14,7 +14,7 @@ const Game = (levelIdx: number) => {
     // add a sprite
     const player = k.add([
         k.sprite("hero", { anim: "idle" }),
-        k.pos( map.getPos(2, 14) ),
+        k.pos( map.getPos(2, 13) ),
         k.area(),
         k.body(),
         k.origin("center"),
@@ -73,8 +73,8 @@ const defineControls = (_player: GameObj) => {
     k.onKeyPress("up", () => {
         if(_player.isGrounded())
         {
-            _player.jump(JUMP_FORCE)
-            _player.play("jump")
+            _player.jump(JUMP_FORCE);
+            _player.play("jump");
         }
     })
 }
