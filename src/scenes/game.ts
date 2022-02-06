@@ -9,7 +9,7 @@ const JUMP_FORCE = 600
 const Game = (levelIdx: number) => {
     const map = k.addLevel(layout[levelIdx], levelConfig);
     let hasBigKey = false;
-    let hasSmallKey = false;
+    // let hasSmallKey = false;
 
     // add a sprite
     const player = k.add([
@@ -34,7 +34,7 @@ const Game = (levelIdx: number) => {
         if(hasBigKey)
         {
             hasBigKey = false;
-            
+
             if(levelIdx < layout.length)
             {
                 go("game", levelIdx + 1)
