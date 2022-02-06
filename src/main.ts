@@ -14,4 +14,5 @@ k.scene('game', Game)
 k.scene('win', Win)
 k.scene('lose', Lose)
 
-k.go('title')
+// k.go('title')
+k.go('game', 0)

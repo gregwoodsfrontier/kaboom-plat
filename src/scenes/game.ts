@@ -1,3 +1,4 @@
+import { GameObj } from "kaboom"
 import k from "../kaboom"
 import layout from "../levels"
 import levelConfig from "../levels/config"
@@ -7,6 +8,8 @@ const JUMP_FORCE = 600
 
 const Game = (levelIdx: number) => {
     const map = k.addLevel(layout[levelIdx], levelConfig);
+    let hasBigKey = false;
+    let hasSmallKey = false;
 
     // add a sprite
     const player = k.add([
@@ -15,43 +18,63 @@ const Game = (levelIdx: number) => {
         k.area(),
         k.body(),
         k.origin("center"),
-        k.scale(3,3)
+        k.scale(3,3),
+        "player"
     ]);
 
-    k.onKeyDown("left", () => {
-        player.move(-SPEED, 0);
-        player.flipX(true)
-    })
-    
-    k.onKeyDown("right", () => {
-        player.move(SPEED, 0);
-        player.flipX(false);
-    })
+    defineControls(player);
 
-    k.onKeyRelease(["left", "right", "up"], () => {
-        player.play("idle");
-    })
-
-    k.onKeyPress(["left", "right"], () => {
-        player.play("run")
-    })
-
-    k.onKeyPress("up", () => {
-        if(player.isGrounded())
-        {
-            player.jump(JUMP_FORCE)
-            player.play("jump")
-        }
+    player.onCollide("big-key", (bigKey: GameObj) => {
+        destroy(bigKey);
+        hasBigKey = true;
+        console.log('player has big key')
     })
     
     player.onCollide("big-door", () => {
-        if(levelIdx < layout.length)
+        if(hasBigKey)
         {
-            go("game", levelIdx + 1)
+            hasBigKey = false;
+            
+            if(levelIdx < layout.length)
+            {
+                go("game", levelIdx + 1)
+            }
+            else
+            {
+                go("win")
+            }
         }
         else
         {
-            go("win")
+            return
+        }
+    })
+}
+
+const defineControls = (_player: GameObj) => {
+    k.onKeyDown("left", () => {
+        _player.move(-SPEED, 0);
+        _player.flipX(true)
+    })
+    
+    k.onKeyDown("right", () => {
+        _player.move(SPEED, 0);
+        _player.flipX(false);
+    })
+
+    k.onKeyRelease(["left", "right", "up"], () => {
+        _player.play("idle");
+    })
+
+    k.onKeyPress(["left", "right"], () => {
+        _player.play("run")
+    })
+
+    k.onKeyPress("up", () => {
+        if(_player.isGrounded())
+        {
+            _player.jump(JUMP_FORCE)
+            _player.play("jump")
         }
     })
 }

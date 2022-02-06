@@ -63,12 +63,14 @@ const levelConfig = {
     "D": () => [
         sprite("big-door", { anim: "closed" }),
         area(),
+        solid(),
         scale(SCALE),
         "big-door"
     ],
     "K": () => [
         sprite("big-key"),
         area(),
+        scale(SCALE),
         "big-key"
     ],
 
