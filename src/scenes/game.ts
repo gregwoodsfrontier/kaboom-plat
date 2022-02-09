@@ -24,6 +24,23 @@ const Game = (levelIdx: number) => {
 
     defineControls(player);
 
+    const period = 2;
+    let time = period;
+
+    /* const plat = get("float")
+
+    onUpdate("float", (f) => {
+        f.move(0, f.dir * f.speed)
+    })
+
+    loop(period, () => {
+        plat.forEach((e) => {
+            e.dir = -e.dir
+        })
+    }) */
+    
+
+
     player.onCollide("big-key", (bigKey: GameObj) => {
         destroy(bigKey);
         hasBigKey = true;
