@@ -12,28 +12,44 @@ const levelConfig = {
         area(),
         solid(),
         scale(SCALE),
-        "float"
+        "float",
+        {
+            speed: 48,
+            dir: 1
+        }
     ],
     "b": () => [
         sprite("gnd-three", { anim: "mid" }),
         area(),
         solid(),
         scale(SCALE),
-        "float"
+        "float",
+        {
+            speed: 48,
+            dir: 1
+        }
     ],
     "c": () => [
         sprite("gnd-three", { anim: "right" }),
         area(),
         solid(),
         scale(SCALE),
-        "float"
+        "float",
+        {
+            speed: 48,
+            dir: 1
+        }
     ],
     "@": () => [
         sprite("gnd-solo"),
         area(),
         solid(),
         scale(SCALE),
-        "float"
+        "float",
+        {
+            speed: 48,
+            dir: choose([-1, 1])
+        }
     ],
     "#": () => [
         sprite("zone-top"),
