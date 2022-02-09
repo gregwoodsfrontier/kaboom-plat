@@ -4,7 +4,7 @@ import layout from "../levels"
 import levelConfig from "../levels/config"
 
 const SPEED = 150
-const JUMP_FORCE = 600
+const JUMP_FORCE = 800 //600
 
 const Game = (levelIdx: number) => {
     const map = k.addLevel(layout[levelIdx], levelConfig);
@@ -28,6 +28,10 @@ const Game = (levelIdx: number) => {
         destroy(bigKey);
         hasBigKey = true;
         console.log('player has big key')
+    })
+
+    player.onGround(() => {
+        player.play("idle")
     })
     
     player.onCollide("big-door", () => {
@@ -62,7 +66,7 @@ const defineControls = (_player: GameObj) => {
         _player.flipX(false);
     })
 
-    k.onKeyRelease(["left", "right", "up"], () => {
+    k.onKeyRelease(["left", "right"], () => {
         _player.play("idle");
     })
 

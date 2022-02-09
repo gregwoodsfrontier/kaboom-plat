@@ -7,6 +7,34 @@ const levelConfig = {
     pos: vec2(0, TILE_HEIGHT),
     width: TILE_WIDTH,
     height: TILE_HEIGHT,
+    "a": () => [
+        sprite("gnd-three", { anim: "left" }),
+        area(),
+        solid(),
+        scale(SCALE),
+        "float"
+    ],
+    "b": () => [
+        sprite("gnd-three", { anim: "mid" }),
+        area(),
+        solid(),
+        scale(SCALE),
+        "float"
+    ],
+    "c": () => [
+        sprite("gnd-three", { anim: "right" }),
+        area(),
+        solid(),
+        scale(SCALE),
+        "float"
+    ],
+    "@": () => [
+        sprite("gnd-solo"),
+        area(),
+        solid(),
+        scale(SCALE),
+        "float"
+    ],
     "#": () => [
         sprite("zone-top"),
         area(),
