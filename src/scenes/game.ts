@@ -3,8 +3,9 @@ import k from "../kaboom"
 import layout from "../levels"
 import { TILE_UNIT } from "../levels/config"
 import levelConfig from "../levels/config"
+import { FloatHori } from "../components"
 
-const PBHS = 0.8 // PLAYER BODY HEIGHT SCALE
+// const PBHS = 0.8 // PLAYER BODY HEIGHT SCALE
 const SPEED = 150
 const JUMP_FORCE = 800 //600
 
@@ -14,52 +15,40 @@ const Game = (levelIdx: number) => {
     // let hasSmallKey = false;
 
     // add a sprite
-    const player = k.add([
-        k.sprite("hero", { anim: "idle" }),
-        k.pos( map.getPos(15, 13) ),
-        k.area({
-            height: TILE_UNIT * PBHS, 
-            offset: vec2( 0, TILE_UNIT * (1 - PBHS) * 2)
-        }),
-        k.body(),
-        k.origin("center"),
-        k.scale(3,3),
-        "player"
-    ]);
+    const player = get("player")[0]
 
     defineControls(player);
 
-    const plat_a = k.add([
+    // create Platform
+    k.add([
         sprite("gnd-solo"),
         scale(3,3),
         k.area({height:8}),
         k.solid(),
         k.pos(map.getPos(10, 10)),
-        "float",
-        {
-            leftX: map.getPos(8, 10).x,
-            rightX: map.getPos(12, 10).x,
-            upY: map.getPos(10, 6).y,
-            downY: map.getPos(10, 11).y,
+        FloatHori({
+            leftMove: 9 * TILE_UNIT,
+            rightMove:  9 * TILE_UNIT,
             dir: 1,
             speed: TILE_UNIT * 5
-        }
-    ])
+        }),
+        "float"
+    ]);
 
-    plat_a.onUpdate(() => {
-        const {upY, downY, speed} = plat_a
-        /* plat_a.move(0, plat_a.dir * speed);
-        if(plat_a.pos.y >= downY || plat_a.pos.y <= upY)
-        {
-            plat_a.dir *= -1
-        } */
-        plat_a.move(plat_a.dir * speed, 0);
-        if(plat_a.pos.x >= plat_a.rightX || plat_a.pos.x <= plat_a.leftX)
-        {
-            plat_a.dir *= -1
-        }
-    })
-
+    k.add([
+        sprite("gnd-solo"),
+        scale(3,3),
+        k.area({height:8}),
+        k.solid(),
+        k.pos(map.getPos(7, 6)),
+        FloatHori({
+            leftMove: 6 * TILE_UNIT,
+            rightMove:  9 * TILE_UNIT,
+            dir: -1,
+            speed: TILE_UNIT * 5
+        }),
+        "float"
+    ]);
 
 
 
