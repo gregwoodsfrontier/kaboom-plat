@@ -14,8 +14,8 @@ const Game = (levelIdx: number) => {
     // add a sprite
     const player = k.add([
         k.sprite("hero", { anim: "idle" }),
-        k.pos( map.getPos(2, 13) ),
-        k.area(),
+        k.pos( map.getPos(15, 13) ),
+        k.area({height:16*0.8, offset:vec2(0,16*(1-0.8)*2)}),
         k.body(),
         k.origin("center"),
         k.scale(3,3),
@@ -24,20 +24,14 @@ const Game = (levelIdx: number) => {
 
     defineControls(player);
 
-    const period = 2;
-    let time = period;
-
-    /* const plat = get("float")
-
-    onUpdate("float", (f) => {
-        f.move(0, f.dir * f.speed)
-    })
-
-    loop(period, () => {
-        plat.forEach((e) => {
-            e.dir = -e.dir
-        })
-    }) */
+    const plat_a = k.add([
+        sprite("gnd-solo"),
+        scale(3,3),
+        k.area({height:8}),
+        k.solid(),
+        k.pos(map.getPos(10, 10)),
+        "float"
+    ])
     
 
 

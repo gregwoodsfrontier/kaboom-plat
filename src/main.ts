@@ -16,3 +16,4 @@ k.scene('lose', Lose)
 
 // k.go('title')
 k.go('game', 0)
+debug.inspect = true
