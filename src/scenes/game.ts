@@ -1,8 +1,10 @@
 import { GameObj } from "kaboom"
 import k from "../kaboom"
 import layout from "../levels"
+import { TILE_UNIT } from "../levels/config"
 import levelConfig from "../levels/config"
 
+const PBHS = 0.8 // PLAYER BODY HEIGHT SCALE
 const SPEED = 150
 const JUMP_FORCE = 800 //600
 
@@ -15,7 +17,10 @@ const Game = (levelIdx: number) => {
     const player = k.add([
         k.sprite("hero", { anim: "idle" }),
         k.pos( map.getPos(15, 13) ),
-        k.area({height:16*0.8, offset:vec2(0,16*(1-0.8)*2)}),
+        k.area({
+            height: TILE_UNIT * PBHS, 
+            offset: vec2( 0, TILE_UNIT * (1 - PBHS) * 2)
+        }),
         k.body(),
         k.origin("center"),
         k.scale(3,3),
@@ -30,9 +35,32 @@ const Game = (levelIdx: number) => {
         k.area({height:8}),
         k.solid(),
         k.pos(map.getPos(10, 10)),
-        "float"
+        "float",
+        {
+            leftX: map.getPos(8, 10).x,
+            rightX: map.getPos(12, 10).x,
+            upY: map.getPos(10, 6).y,
+            downY: map.getPos(10, 11).y,
+            dir: 1,
+            speed: TILE_UNIT * 5
+        }
     ])
-    
+
+    plat_a.onUpdate(() => {
+        const {upY, downY, speed} = plat_a
+        /* plat_a.move(0, plat_a.dir * speed);
+        if(plat_a.pos.y >= downY || plat_a.pos.y <= upY)
+        {
+            plat_a.dir *= -1
+        } */
+        plat_a.move(plat_a.dir * speed, 0);
+        if(plat_a.pos.x >= plat_a.rightX || plat_a.pos.x <= plat_a.leftX)
+        {
+            plat_a.dir *= -1
+        }
+    })
+
+
 
 
     player.onCollide("big-key", (bigKey: GameObj) => {
