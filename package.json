@@ -11,7 +11,9 @@
     "vite": "^2.7.2"
   },
   "dependencies": {
+    "@types/matter-js": "^0.17.7",
     "kaboom": "^2000.1.8",
+    "matter-js": "^0.18.0",
     "tiled-kaboom": "0.0.14"
   }
 }

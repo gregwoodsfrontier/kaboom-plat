@@ -20,7 +20,7 @@ const Game = (levelIdx: number) => {
     defineControls(player);
 
     // create Platform
-    k.add([
+    const p = k.add([
         sprite("gnd-solo"),
         scale(3,3),
         k.area({height:8}),
