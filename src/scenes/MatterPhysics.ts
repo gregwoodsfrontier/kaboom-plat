@@ -33,6 +33,7 @@ const MatterPhysics = () => {
             32
         ),
         k.origin('center'),
+        k.rotate(0),
         k.color(
             0, 0, 255
         ),
