@@ -39,7 +39,9 @@ export function MatterRect (engine: Matter.Engine, options = {}, w = 32, h = 32)
     return {
         id: "MatterRect",
         require: [
-            "pos"
+            "pos",
+            "rect",
+            "rotate"
         ],
         add(this: PosComp & RectComp & RotateComp) {
             const { x, y } = this.pos;
