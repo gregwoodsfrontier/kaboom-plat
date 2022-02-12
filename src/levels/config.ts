@@ -1,4 +1,4 @@
-const SCALE = 3
+export const SCALE = 3
 export const TILE_UNIT = 16
 const TILE_WIDTH = TILE_UNIT * SCALE
 const TILE_HEIGHT = TILE_UNIT * SCALE
