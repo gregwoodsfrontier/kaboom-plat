@@ -6,7 +6,7 @@ import levelConfig from "../levels/config"
 import { FloatHori } from "../components"
 
 // const PBHS = 0.8 // PLAYER BODY HEIGHT SCALE
-const SPEED = 150
+const SPEED = 180
 const JUMP_FORCE = 800 //600
 
 const Game = (levelIdx: number) => {
@@ -19,38 +19,30 @@ const Game = (levelIdx: number) => {
 
     defineControls(player);
 
-    // create Platform
-    /* const p = k.add([
-        sprite("gnd-solo"),
-        scale(3,3),
-        k.area({height:8}),
-        k.solid(),
-        k.pos(map.getPos(10, 10)),
-        FloatHori({
-            leftMove: 9 * TILE_UNIT,
-            rightMove:  9 * TILE_UNIT,
-            dir: 1,
-            speed: TILE_UNIT * 5
-        }),
-        "float"
-    ]); */
+    const floating = get("float");
+    if(floating[0])
+    {
+        floating[0].setDelay(2);
+    }
+    /*const xrange = [TILE_UNIT * 14, TILE_UNIT * 14];
+    const delay = [ 0, 2]; */
 
-    k.add([
-        sprite("gnd-solo"),
-        scale(3,3),
-        k.area({height:8}),
-        k.solid(),
-        k.pos(map.getPos(7, 6)),
-        FloatHori({
-            leftMove: 6 * TILE_UNIT,
-            rightMove:  9 * TILE_UNIT,
-            dir: -1,
-            speed: TILE_UNIT * 5
-        }),
-        "float"
-    ]);
+    /* onUpdate(() => {
+        if(!floating)
+        {
+            return
+        }
 
+        const midpos = [
+            floating[0].pos.x - TILE_UNIT * 2,
+            floating[1].pos.x - TILE_UNIT * 2,
+        ];
 
+        for(let i = 0; i < floating.length; i++)
+        {
+            floating[i].pos.x = wave(midpos[i] - xrange[i], midpos[i] + xrange[i], time() + delay[i]);
+        }
+    }) */
 
     player.onCollide("big-key", (bigKey: GameObj) => {
         destroy(bigKey);

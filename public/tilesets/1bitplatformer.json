@@ -160,5 +160,41 @@
 			"mid": 1,
 			"right": 2
 		}
+	},
+	"excl-border-no-wht": {
+		"x": 112,
+		"y": 32,
+		"width": 16,
+		"height": 16
+	},
+	"eye-border-no-wht": {
+		"x": 112,
+		"y": 32,
+		"width": 16,
+		"height": 16
+	},
+	"non-border-no-wht": {
+		"x": 112,
+		"y": 32,
+		"width": 16,
+		"height": 16
+	},
+	"x-border-no-wht": {
+		"x": 112,
+		"y": 32,
+		"width": 16,
+		"height": 16
+	},
+	"check-border-no-wht": {
+		"x": 112,
+		"y": 32,
+		"width": 16,
+		"height": 16
+	},
+	"spike":{
+		"x": 32,
+		"y": 96,
+		"width": 16,
+		"height": 16
 	}
 }

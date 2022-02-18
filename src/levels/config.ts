@@ -1,4 +1,5 @@
 import { FloatHori } from "../components"
+import k from "../kaboom"
 
 export const SCALE = 3
 export const TILE_UNIT = 16
@@ -10,6 +11,33 @@ const levelConfig = {
     pos: vec2(0, TILE_HEIGHT),
     width: TILE_WIDTH,
     height: TILE_HEIGHT,
+    "1": () => [
+        sprite("spike"),
+        area({
+            height: TILE_UNIT * 0.5,
+            offset: vec2(0, TILE_UNIT * 1.5)
+        }),
+        solid(),
+        scale(SCALE),
+        rotate(0)
+    ],
+    "2": () => [
+        sprite("spike"),
+        k.origin('botright'),
+        area({
+            height: TILE_UNIT * 0.5,
+            offset: vec2(TILE_UNIT*3, TILE_UNIT*1.5)
+        }),
+        solid(),
+        scale(SCALE),
+        rotate(180)
+    ],
+    "o": () => [
+        sprite("non-border-no-wht"),
+        area(),
+        solid(),
+        scale(SCALE)
+    ],
     "p": () => [
         sprite("hero", { anim: "idle" }),
         area({
@@ -27,13 +55,12 @@ const levelConfig = {
         }),
         solid(),
         scale(SCALE),
+        "whole",
+        "float",
         FloatHori({
-            leftMove: 9 * TILE_UNIT,
-            rightMove:  9 * TILE_UNIT,
-            dir: choose([1, -1]),
-            speed: TILE_UNIT * 5
-        }),
-        "whole"
+            xrange: TILE_UNIT * 12,
+            delay: 0
+        })
     ],
     "@": () => [
         sprite("gnd-solo"),

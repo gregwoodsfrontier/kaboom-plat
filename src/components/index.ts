@@ -2,37 +2,37 @@ import k from "../kaboom"
 import Matter from 'matter-js'
 import type { PosComp, RectComp, RotateComp, SpriteComp } from 'kaboom'
 
-interface FloatHoriComp {
-    leftMove: number,
-    rightMove: number,
-    speed: number,
-    dir: number
+interface FloatHoriInput {
+    xrange: number,
+    delay: number
 }
 
 type MatterRectComp = PosComp & RectComp & RotateComp;
 type MatterSpriteComp = PosComp & RotateComp & SpriteComp;
 
-export const FloatHori = (_input: FloatHoriComp) => {
-    let {leftMove, rightMove, dir, speed} = _input
+export const FloatHori = (_input: FloatHoriInput) => {
+    let {xrange, delay} = _input
     let leftLimit: number;
     let rightLimit: number;
 
     return {
-        id: "floatHori",
+        id: "FloatHori",
         require: [
             "area",
             "pos"
         ],
         add(this: PosComp) {
-            leftLimit = this.pos.x - leftMove;
-            rightLimit = this.pos.x + rightMove;
+            leftLimit = this.pos.x - xrange;
+            rightLimit = this.pos.x + xrange;
         },
         update(this: PosComp) {
-            this.move(dir * speed, 0);
-            if(this.pos.x >= rightLimit || this.pos.x <= leftLimit)
-            {
-                dir = -dir
-            }
+            this.pos.x = wave(leftLimit, rightLimit, time() + delay);
+        },
+        setDelay(_num: number) {
+            delay = _num
+        },
+        setXRange(_num: number) {
+            xrange = _num
         }
     }
 }
@@ -65,7 +65,8 @@ export function MatterSprite (engine: Matter.Engine, options = {}, w = 32, h = 3
                 x,
                 y,
                 w,
-                h
+                h,
+                options
             )
             Matter.Composite.add(engine.world, spriteBody)
         },
