@@ -20,7 +20,7 @@ const Game = (levelIdx: number) => {
     defineControls(player);
 
     // create Platform
-    const p = k.add([
+    /* const p = k.add([
         sprite("gnd-solo"),
         scale(3,3),
         k.area({height:8}),
@@ -33,7 +33,7 @@ const Game = (levelIdx: number) => {
             speed: TILE_UNIT * 5
         }),
         "float"
-    ]);
+    ]); */
 
     k.add([
         sprite("gnd-solo"),

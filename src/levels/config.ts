@@ -1,3 +1,5 @@
+import { FloatHori } from "../components"
+
 export const SCALE = 3
 export const TILE_UNIT = 16
 const TILE_WIDTH = TILE_UNIT * SCALE
@@ -18,38 +20,20 @@ const levelConfig = {
         scale(SCALE),
         "player"
     ],
-    "a": () => [
-        sprite("gnd-three", { anim: "left" }),
-        area(),
+    "C": () => [
+        sprite("gnd-three-all"),
+        area({
+            height: TILE_UNIT * 0.5
+        }),
         solid(),
         scale(SCALE),
-        "float",
-        {
-            speed: 48,
-            dir: 1
-        }
-    ],
-    "b": () => [
-        sprite("gnd-three", { anim: "mid" }),
-        area(),
-        solid(),
-        scale(SCALE),
-        "float",
-        {
-            speed: 48,
-            dir: 1
-        }
-    ],
-    "c": () => [
-        sprite("gnd-three", { anim: "right" }),
-        area(),
-        solid(),
-        scale(SCALE),
-        "float",
-        {
-            speed: 48,
-            dir: 1
-        }
+        FloatHori({
+            leftMove: 9 * TILE_UNIT,
+            rightMove:  9 * TILE_UNIT,
+            dir: choose([1, -1]),
+            speed: TILE_UNIT * 5
+        }),
+        "whole"
     ],
     "@": () => [
         sprite("gnd-solo"),
