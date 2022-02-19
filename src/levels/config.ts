@@ -19,7 +19,8 @@ const levelConfig = {
         }),
         solid(),
         scale(SCALE),
-        rotate(0)
+        rotate(0),
+        "danger"
     ],
     "2": () => [
         sprite("spike"),
@@ -30,7 +31,8 @@ const levelConfig = {
         }),
         solid(),
         scale(SCALE),
-        rotate(180)
+        rotate(180),
+        "danger"
     ],
     "o": () => [
         sprite("non-border-no-wht"),

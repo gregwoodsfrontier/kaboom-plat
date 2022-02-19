@@ -22,27 +22,8 @@ const Game = (levelIdx: number) => {
     const floating = get("float");
     if(floating[0])
     {
-        floating[0].setDelay(2);
+        floating[0].setDelay(1.2);
     }
-    /*const xrange = [TILE_UNIT * 14, TILE_UNIT * 14];
-    const delay = [ 0, 2]; */
-
-    /* onUpdate(() => {
-        if(!floating)
-        {
-            return
-        }
-
-        const midpos = [
-            floating[0].pos.x - TILE_UNIT * 2,
-            floating[1].pos.x - TILE_UNIT * 2,
-        ];
-
-        for(let i = 0; i < floating.length; i++)
-        {
-            floating[i].pos.x = wave(midpos[i] - xrange[i], midpos[i] + xrange[i], time() + delay[i]);
-        }
-    }) */
 
     player.onCollide("big-key", (bigKey: GameObj) => {
         destroy(bigKey);
@@ -52,6 +33,11 @@ const Game = (levelIdx: number) => {
 
     player.onGround(() => {
         player.play("idle")
+    })
+
+    player.onCollide("danger", () => {
+        debug.log("player collide spikes");
+
     })
     
     player.onCollide("big-door", () => {
