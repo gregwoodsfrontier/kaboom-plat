@@ -1,4 +1,4 @@
-import { FloatHori } from "../components"
+import { FloatHori, FloatVert } from "../components"
 import k from "../kaboom"
 
 export const SCALE = 3
@@ -11,6 +11,20 @@ const levelConfig = {
     pos: vec2(0, TILE_HEIGHT),
     width: TILE_WIDTH,
     height: TILE_HEIGHT,
+    "E": () => [
+        sprite("gnd-three-all"),
+        area({
+            height: TILE_UNIT * 0.5
+        }),
+        solid(),
+        scale(SCALE),
+        "float-vert",
+        FloatVert({
+            upY: TILE_UNIT * 2,
+            downY: TILE_UNIT * 2,
+            delay: 0
+        })
+    ],
     "1": () => [
         sprite("spike"),
         area({

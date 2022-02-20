@@ -17,6 +17,6 @@ k.scene('lose', Lose)
 k.scene('matterphysics', MatterPhysics)
 
 // k.go('title')
-k.go('game', 0)
+k.go('game', 1)
 // k.go("matterphysics")
 debug.inspect = true

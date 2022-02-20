@@ -19,12 +19,6 @@ const Game = (levelIdx: number) => {
 
     defineControls(player);
 
-    const floating = get("float");
-    if(floating[0])
-    {
-        floating[0].setDelay(1.2);
-    }
-
     player.onCollide("big-key", (bigKey: GameObj) => {
         destroy(bigKey);
         hasBigKey = true;

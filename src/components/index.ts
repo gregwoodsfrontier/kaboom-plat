@@ -3,15 +3,52 @@ import Matter from 'matter-js'
 import type { PosComp, RectComp, RotateComp, SpriteComp } from 'kaboom'
 
 interface FloatHoriInput {
-    xrange: number,
+    leftX: number,
+    rightX: number,
+    delay: number
+}
+
+interface FloatVertInput {
+    upY: number,
+    downY: number,
     delay: number
 }
 
 type MatterRectComp = PosComp & RectComp & RotateComp;
 type MatterSpriteComp = PosComp & RotateComp & SpriteComp;
 
+export const FloatVert = (_input: FloatVertInput) => {
+    let { upY, downY, delay } = _input;
+    let upLimit: number;
+    let downLimit: number;
+
+    return {
+        id: "FloatVert",
+        require: [
+            "area",
+            "pos"
+        ],
+        add(this: PosComp) {
+            upLimit = this.pos.y - upY;
+            downLimit = this.pos.y + downY;
+        },
+        update(this: PosComp) {
+            this.pos.y = wave(upLimit, downLimit, time() + delay);
+        },
+        setDelay(_value: number) {
+            delay = _value;
+        },
+        setUpY(_value: number) {
+            upY = _value;
+        },
+        setDownY(_value: number) {
+            downY = _value;
+        }
+    }
+}
+
 export const FloatHori = (_input: FloatHoriInput) => {
-    let {xrange, delay} = _input
+    let {leftX, rightX, delay} = _input
     let leftLimit: number;
     let rightLimit: number;
 
@@ -22,8 +59,8 @@ export const FloatHori = (_input: FloatHoriInput) => {
             "pos"
         ],
         add(this: PosComp) {
-            leftLimit = this.pos.x - xrange;
-            rightLimit = this.pos.x + xrange;
+            leftLimit = this.pos.x - leftX;
+            rightLimit = this.pos.x + rightX;
         },
         update(this: PosComp) {
             this.pos.x = wave(leftLimit, rightLimit, time() + delay);
@@ -31,8 +68,11 @@ export const FloatHori = (_input: FloatHoriInput) => {
         setDelay(_num: number) {
             delay = _num
         },
-        setXRange(_num: number) {
-            xrange = _num
+        setLeftX(_value: number) {
+            leftX = _value;
+        },
+        setRightX(_value: number) {
+            rightX = _value;
         }
     }
 }
