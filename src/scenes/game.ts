@@ -1,9 +1,9 @@
 import { GameObj } from "kaboom"
 import k from "../kaboom"
 import layout from "../levels"
-import { TILE_UNIT } from "../levels/config"
+// import { TILE_UNIT } from "../levels/config"
 import levelConfig from "../levels/config"
-import { FloatHori } from "../components"
+// import { FloatHori } from "../components"
 
 // const PBHS = 0.8 // PLAYER BODY HEIGHT SCALE
 const SPEED = 180

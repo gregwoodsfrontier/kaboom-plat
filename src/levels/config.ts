@@ -74,7 +74,8 @@ const levelConfig = {
         "whole",
         "float",
         FloatHori({
-            xrange: TILE_UNIT * 12,
+            leftX: TILE_UNIT * 12,
+            rightX: TILE_UNIT * 12,
             delay: 0
         })
     ],
